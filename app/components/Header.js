@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 32,
     fontWeight: '500',
-    fontFamily: 'Futura'
+    fontFamily: 'Menlo-Bold'
   }
 });
 export default Header;

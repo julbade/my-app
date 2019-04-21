@@ -185,12 +185,12 @@ const styles = StyleSheet.create({
   centered: {
     alignItems: 'center',
     marginTop: 10,
-    fontFamily: 'Futura'
+    
   },
   inputContainer: {
     marginTop: 70,
     paddingLeft: 15,
-    fontFamily: 'Futura'
+   
   },
   list: {
     flex: 1,
