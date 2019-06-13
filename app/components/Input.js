@@ -1,13 +1,11 @@
 import React from 'react';
 import { StyleSheet, TextInput } from 'react-native';
-import { inputPlaceholder } from '../utils/Colors';
+
 const Input = ({ inputValue, onChangeText, onDoneAddItem }) => (
   <TextInput
     style={styles.input}
     value={inputValue}
     onChangeText={onChangeText}
-    placeholder="Type here to add note."
-    placeholderTextColor={inputPlaceholder}
     multiline={true}
     autoCapitalize="sentences"
     underlineColorAndroid="transparent"
@@ -18,15 +16,17 @@ const Input = ({ inputValue, onChangeText, onDoneAddItem }) => (
     blurOnSubmit={true}
     onSubmitEditing={onDoneAddItem}
   />
+  
+  
 );
 const styles = StyleSheet.create({
   input: {
     paddingTop: 10,
     paddingRight: 15,
-    fontSize: 24,
-    color: 'white',
+    fontSize: 14,
+    color: 'black',
     fontWeight: '500',
-    fontFamily: 'Menlo-Bold'
+    fontFamily: 'Al Nile'
   }
 });
 export default Input;

@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "expo": "^32.0.0",
     "expo-asset-utils": "^1.0.0",
+    "expo-cli": "^2.18.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "uuid": "^3.3.2"
@@ -18,5 +19,18 @@
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
   },
-  "private": true
+  "private": true,
+  "name": "my-app",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julbade/my-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julbade/my-app/issues"
+  },
+  "homepage": "https://github.com/julbade/my-app#readme",
+  "description": ""
 }

@@ -6,7 +6,8 @@ import {
   ActivityIndicator,
   ScrollView,
   AsyncStorage,
-  TouchableOpacity
+  TouchableOpacity,
+  Text
 } from 'react-native';
 import { LinearGradient } from 'expo';
 import uuid from 'uuid/v1';
@@ -16,9 +17,11 @@ import SubTitle from './components/SubTitle';
 import Input from './components/Input';
 import List from './components/List';
 import Button from './components/Button';
+import LoginButton from './components/LoginButton';
+import SignupButton from './components/SignupButton'
 
 
-const headerTitle = 'To Do List';
+const headerTitle = ' Help';
 
 
 
@@ -102,6 +105,7 @@ export default class Main extends React.Component {
       return { ...newState };
     });
   };
+  
   incompleteItem = id => {
     this.setState(prevState => {
       const newState = {
@@ -135,13 +139,36 @@ export default class Main extends React.Component {
     return (
       <LinearGradient colors={primaryGradientArray} style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.centered}>
+        <View>
           <Header title={headerTitle} />
+          <SubTitle subtitle={"Welcome"}/>
         </View>
+        <View style={styles.buttonView}>
+          <TouchableOpacity>
+            <LoginButton/>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <SignupButton/>
+          </TouchableOpacity>
+        </View>
+        <Text style={styles.text}>
+              Email
+            </Text>
         <View style={styles.inputContainer}>
-          <SubTitle subtitle={"What's Next?"} />
+           
           <Input
             inputValue={inputValue}
+            onChangeText={this.newInputValue}
+            onDoneAddItem={this.onDoneAddItem}
+          />
+        </View>
+        <Text style={styles.text}>
+              Password
+            </Text>
+        <View style={styles.inputContainer}>
+           
+          <Input
+            inputPassword={inputPassword}
             onChangeText={this.newInputValue}
             onDoneAddItem={this.onDoneAddItem}
           />
@@ -151,7 +178,7 @@ export default class Main extends React.Component {
             <SubTitle subtitle={'Recent Notes'} />
             <View style={styles.deleteAllButton}>
               <TouchableOpacity onPress={this.deleteAllItems}>
-              <Button title={"Delete all"} />
+              <Button/>
               </TouchableOpacity>
             </View>
           </View>
@@ -170,7 +197,7 @@ export default class Main extends React.Component {
                 ))}
             </ScrollView>
           ) : (
-            <ActivityIndicator size="large" color="white" />
+            <ActivityIndicator size="large" color="black" />
           )}
         </View>
       </LinearGradient>
@@ -182,14 +209,24 @@ const styles = StyleSheet.create({
     flex: 1,
     
   },
-  centered: {
-    alignItems: 'center',
-    marginTop: 10,
-    
+  text: {
+    fontSize: 32,
+    marginLeft: 50,
+    marginTop: 20,
   },
+  buttonView: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
   inputContainer: {
-    marginTop: 70,
-    paddingLeft: 15,
+    marginTop: 10,
+    marginLeft: 50,
+    paddingLeft: 5,
+    backgroundColor: 'white',
+    width: 250,
+    justifyContent: 'center'
+  
    
   },
   list: {

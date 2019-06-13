@@ -11,13 +11,14 @@ const SubTitle = ({ subtitle }) => (
 
 const styles = StyleSheet.create({
   headerContainer: {
-    marginTop: 40
+    marginTop: 30
   },
   headerText: {
-    color: 'white',
-    fontSize: 15,
+    color: 'black',
+    fontSize: 25,
     fontWeight: '500',
-   
+    fontFamily: 'Al Nile',
+    textAlign: 'center'
   }
 });
 export default SubTitle;
