@@ -6,7 +6,7 @@ import { View, Text, StyleSheet } from 'react-native';
 const Button = () => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerText}>
-           Login
+           Sign In
     </Text>
   </View>
 );
