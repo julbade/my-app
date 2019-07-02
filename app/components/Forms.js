@@ -3,7 +3,10 @@ import { View,
   StyleSheet,
   Button 
 } from 'react-native';
-import t from 'tcomb-form-native'; 
+import t from 'tcomb-form-native';
+import http from '../services/httpService';
+import  config  from '../config.json';
+
 
 
 
@@ -36,23 +39,56 @@ const options = {
 
 export default class Forms extends Component {
 
-  handleSubmit = () => {
-    const value = this._form.getValue();
-    console.log('value:', value);
-  };
+  state = {
+    contacts: []
+  }
+
+  getContacts() {
+    http.get(config.apiEndpoint)
+        .then(response => 
+            response.data.data.map(user => ({
+                name: `${user.name}`,
+                gender: `${user.gender}`,
+                email: `${user.email}`,
+                phone: `${user.phone}`,
+                create_date: `${user.create_date}`,
+                _id: `${user._id}` 
+            }))
+            )
+            .then(contacts => {
+                this.setState({ contacts });
+              
+            })
+            .catch(error => this.setState({ error }))
+         
+}
+addContacts = async () => {
+   const data = this.state.contacts;
+    await http.post(config.apiEndpoint, data)
+
+}
+
+
+componentDidMount() {
+    this.getContacts()
+
+};
+
+
 
 
   render() {
     return (
+ 
       <View style={styles.container}>
         <Form 
-          ref={c => this._form = c}
           options={options}
           type={User} 
+
         />
         <Button
           title="Sign Up!"
-          onPress={this.handleSubmit}
+          onPress={this.addContacts}
           />
       </View>
     );

@@ -6,11 +6,11 @@ import {
   ActivityIndicator,
   ScrollView,
   AsyncStorage,
+  Text,
   TouchableOpacity,
 
 } from 'react-native';
 import { LinearGradient } from 'expo';
-import uuid from 'uuid/v1';
 import { primaryGradientArray } from './utils/Colors';
 import Header from './components/Header';
 import SubTitle from './components/SubTitle';
@@ -18,19 +18,19 @@ import Button from './components/Button';
 import LoginButton from './components/LoginButton';
 import SignupButton from './components/SignupButton'
 import Forms from './components/Forms';
-import ContactList from './components/ContactList';
+import ContactList from './components/ContacList';
+
+
+
 
 
 const headerTitle = ' Help';
 
 
-
 export default class Main extends React.Component {
-  
 
 
   render() {
-
     return (
       <LinearGradient colors={primaryGradientArray} style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -51,11 +51,11 @@ export default class Main extends React.Component {
              <Forms style={styles.formView}/>
             </ScrollView>
         </View>
-        <View>
+       
           <ScrollView style={styles.scrollView}>
-            <ContactList/>
+            <ContactList/>          
           </ScrollView>
-        </View>
+
 
       </LinearGradient>
     );
@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     height: 350,
-    marginTop: 10
+    marginTop: 10,
+  
     
   }
 

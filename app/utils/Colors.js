@@ -1,5 +1,5 @@
-const primaryStart = "#62afc4";
-const primaryEnd = '#396875';
+const primaryStart = "white";
+const primaryEnd = 'white';
 export const primaryGradientArray = [primaryStart, primaryEnd];
 export const lightWhite = '#fcefe9';
 export const inputPlaceholder = 'black';
