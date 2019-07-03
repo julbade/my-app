@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { View, 
   StyleSheet,
-  Button 
+  TouchableHighlight,
+  Text
 } from 'react-native';
 import t from 'tcomb-form-native';
 import http from '../services/httpService';
 import  config  from '../config.json';
+
 
 
 
@@ -43,53 +45,48 @@ export default class Forms extends Component {
     contacts: []
   }
 
-  getContacts() {
-    http.get(config.apiEndpoint)
-        .then(response => 
-            response.data.data.map(user => ({
-                name: `${user.name}`,
-                gender: `${user.gender}`,
-                email: `${user.email}`,
-                phone: `${user.phone}`,
-                create_date: `${user.create_date}`,
-                _id: `${user._id}` 
-            }))
-            )
-            .then(contacts => {
-                this.setState({ contacts });
-              
-            })
-            .catch(error => this.setState({ error }))
-         
+
+addContacts = (e) => {
+  e.preventDefault()
+  let value = this.refs.form.getValue();
+  if(value) {
+    fetch(config.apiEndpoint, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: value.name,
+        gender: value.gender,
+        phone: value.phone,
+        email: value.email
+      })
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData)
+      this.setState({ responseData })
+    })
+    .done()
+  }
 }
-addContacts = async () => {
-   const data = this.state.contacts;
-    await http.post(config.apiEndpoint, data)
-
-}
-
-
-componentDidMount() {
-    this.getContacts()
-
-};
-
-
-
 
   render() {
     return (
  
       <View style={styles.container}>
+        
         <Form 
+          ref="form"
           options={options}
           type={User} 
 
         />
-        <Button
-          title="Sign Up!"
-          onPress={this.addContacts}
-          />
+        <TouchableHighlight style={styles.button} onPress={this.addContacts}>
+          <Text style={styles.buttonText}>Add Contact</Text>
+        </TouchableHighlight>
+        
       </View>
     );
   }
@@ -102,6 +99,21 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#fff',
   },
+  button: {
+    height: 36,
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+},
+buttonText: {
+  fontSize: 18,
+  color: 'white',
+  alignSelf: 'center'
+},
 
 
  

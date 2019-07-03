@@ -9,6 +9,10 @@ import  config  from './../config.json';
 
 
 
+
+
+
+
 export default class ContactList extends Component {
     state = {
         contacts: []
@@ -31,6 +35,10 @@ export default class ContactList extends Component {
                 })
                 .catch(error => this.setState({ error }))
     }
+    handleDelete = () => {
+        http.delete("https://protected-gorge-80525.herokuapp.com/api/contacts/:contacts_id", this.state.contacts)
+        .then(res => console.log(res.data))
+    }
 
     componentDidMount() {
         this.getContacts()
@@ -44,6 +52,9 @@ export default class ContactList extends Component {
                     const { name, email, phone, gender, create_date, _id} = contact;
                     return (
                         <View style={styles.text} key={_id}>
+                        <Button 
+                            title="Delete"
+                            onPress={this.handleDelete}/>
                         <Text>  
                             create date: {create_date}
                         </Text>
