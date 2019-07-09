@@ -11,8 +11,6 @@ import  config  from './../config.json';
 
 
 
-
-
 export default class ContactList extends Component {
     state = {
         contacts: []
@@ -35,10 +33,13 @@ export default class ContactList extends Component {
                 })
                 .catch(error => this.setState({ error }))
     }
-    handleDelete = () => {
-        http.delete("https://protected-gorge-80525.herokuapp.com/api/contacts/:contacts_id", this.state.contacts)
-        .then(res => console.log(res.data))
-    }
+    handleDelete(contact){
+        const contacts = this.state.contacts.filter(c => 
+            c._id !== contact._id)
+        http.delete(config.apiEndpoint + "/" + contact._id)
+        this.setState({ contacts })      
+      }
+    
 
     componentDidMount() {
         this.getContacts()
@@ -51,10 +52,12 @@ export default class ContactList extends Component {
                 {contacts.map(contact =>{
                     const { name, email, phone, gender, create_date, _id} = contact;
                     return (
-                        <View style={styles.text} key={_id}>
-                        <Button 
+                        <View style={styles.text} key={contact._id}>
+                            <Button 
+                            key={contact._id}
                             title="Delete"
-                            onPress={this.handleDelete}/>
+                            onPress={this.handleDelete.bind(this, contact)} 
+                           />
                         <Text>  
                             create date: {create_date}
                         </Text>
@@ -69,7 +72,7 @@ export default class ContactList extends Component {
                         </Text>
                         <Text>  
                             phone: {phone}
-                        </Text>
+                        </Text> 
                         </View>
                     )
                 })}

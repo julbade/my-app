@@ -5,7 +5,6 @@ import { View,
   Text
 } from 'react-native';
 import t from 'tcomb-form-native';
-import http from '../services/httpService';
 import  config  from '../config.json';
 
 
@@ -70,6 +69,7 @@ addContacts = (e) => {
     })
     .done()
   }
+  
 }
 
   render() {

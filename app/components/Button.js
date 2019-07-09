@@ -6,11 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const Button = () => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerText}>
-            <MaterialIcons
-                name="delete-forever"
-                size={24}
-                color="white"
-              />
+        Go to profile
  </Text>
   </View>
 );
@@ -21,9 +17,10 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   headerText: {
-    color: 'white',
-    fontSize: 12,
-    fontWeight: '500',
+    color: 'blue',
+    fontSize: 18,
+    fontWeight: '800',
+    textAlign: 'center'
    
   }
 });
