@@ -39,7 +39,7 @@ const options = {
 
 
 export default class Forms extends Component {
-
+ 
   state = {
     contacts: []
   }
@@ -73,6 +73,7 @@ addContacts = (e) => {
 }
 
   render() {
+    
     return (
  
       <View style={styles.container}>

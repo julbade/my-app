@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const Button = () => (
   <View style={styles.headerContainer}>
     <Text style={styles.headerText}>
-        Go to profile
+         Profile
  </Text>
   </View>
 );
@@ -17,10 +17,11 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   headerText: {
-    color: 'blue',
+    color: 'black',
     fontSize: 18,
     fontWeight: '800',
-    textAlign: 'center'
+    textAlign: 'center',
+  
    
   }
 });

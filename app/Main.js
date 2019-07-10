@@ -7,18 +7,19 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  Button
 
 } from 'react-native';
-
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { LinearGradient } from 'expo';
 import { primaryGradientArray } from './utils/Colors';
 import Header from './components/Header';
-import SubTitle from './components/SubTitle';
-import Button from './components/Button';
-import LoginButton from './components/LoginButton';
-import SignupButton from './components/SignupButton'
 import Forms from './components/Forms';
 import ContactList from './components/ContacList';
+
+
+
+
 
 
 
@@ -27,26 +28,23 @@ import ContactList from './components/ContacList';
 const headerTitle = ' Help';
 
 
-export default class Main extends React.Component {
+class Main extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
-
-
- 
   render() {
-     
+    const navigate = this.props.navigation;
     return (
       <LinearGradient colors={primaryGradientArray} style={styles.container}>
         <StatusBar barStyle="light-content" />
         <View>
           <Header title={headerTitle} />
-          <SubTitle subtitle="Welcome"/>
-          
-        </View>
-       
-        <View> 
-           <ScrollView style={styles.scrollView}>  
-             <Forms style={styles.formView}/>
-            </ScrollView>
+          <Button
+            title="Profiles"
+            onPress={() => navigate('ContactList')}
+            />
+            <AppContainer/>
         </View>
       </LinearGradient>
     );
@@ -73,3 +71,12 @@ const styles = StyleSheet.create({
     
   }
 });
+const  SimpleAppNavigator = createStackNavigator({
+  Form: { screen: Forms },
+  ContacList: { screen: ContactList }
+});
+
+const AppContainer = createAppContainer(SimpleAppNavigator);
+
+
+export default Main;
