@@ -41,7 +41,7 @@ export default class ContactList extends Component {
       }
     
 
-    componentDidMount() {
+   async componentDidMount() {
         this.getContacts()
     }
    
