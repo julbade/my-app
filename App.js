@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Image, View, Text } from 'react-native';
+import { Button, Image, View, Text, ScrollView } from 'react-native';
 import { createStackNavigator, createAppContainer } from 'react-navigation'; // 1.0.0-beta.27
 import ContactList from './app/components/ContacList';
 import Forms from './app/components/Forms';
@@ -64,9 +64,12 @@ class DetailsScreen extends React.Component {
     const otherParam = params ? params.otherParam : null;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    
-        <ContactList/>
+      <View style={{ flex: 1, alignItems: 'center'}}>
+       
+          <ScrollView>
+            <ContactList/>
+          </ScrollView>
+
         <Text>Details Screen</Text>
         <Button
           title="Update the title"
@@ -74,13 +77,10 @@ class DetailsScreen extends React.Component {
             this.props.navigation.setParams({ otherParam: 'Updated!' })}
         />
         <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-        <Button
           title="Go back"
           onPress={() => this.props.navigation.goBack()}
         />
+       
       </View>
     );
   }

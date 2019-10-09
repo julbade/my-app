@@ -58,9 +58,7 @@ export default class ContactList extends Component {
                             title="Delete"
                             onPress={this.handleDelete.bind(this, contact)} 
                            />
-                        <Text>  
-                            create date: {create_date}
-                        </Text>
+            
                         <Text>
                             name: {name}
                           </Text>
@@ -84,7 +82,6 @@ export default class ContactList extends Component {
 const styles = StyleSheet.create({
     container: {
       justifyContent: 'center',
-      padding: 20,
       backgroundColor: '#fff',
       display: 'flex'
     },
