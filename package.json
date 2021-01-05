@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.2",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "expo": "^35.0.0",
     "expo-asset-utils": "^1.0.0",
     "expo-cli": "^2.18.0",
